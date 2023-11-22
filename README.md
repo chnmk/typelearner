@@ -1,44 +1,75 @@
-# typelearner
+# Nuxt 3 Minimal Starter
 
-A Vue single page application for language learning.
- 
-Provides an interactive typing practice environment for random sentences fetched from [Tatoeba](https://tatoeba.org/). 
+Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
 
-![](/src/assets/preview.png?raw="true" "Preview")
+## Setup
 
-Please note that the main purpose of this project is webdev practice. I currently have no intent of turning it into a serious language learning tool.
+Make sure to install the dependencies:
 
-Original project template generated with Vue CLI 5.0.8.
-
-The rewrite-vite-vuex-typescript branch is a (over-engineered) rewrite of this project using create-vue, vite, vuex, vue-router and typescript. 
-
-## TODO
-
-### Priority level 1
-
-* Vite implementation
-* Words per minute metric
-
-### Priority level 2
-
-* Keyboard click map
-* Mobile layout
-* Design improvements
-* Night theme
-
-### Priority level 3
-
-* English interface
-* Saving progress
-
-## Project setup
-```
+```bash
+# npm
 npm install
 
-npm run serve
+# pnpm
+pnpm install
 
-npm run build
+# yarn
+yarn install
+
+# bun
+bun install
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## Development Server
+
+Start the development server on `http://localhost:3000`:
+
+```bash
+# npm
+npm run dev
+
+# pnpm
+pnpm run dev
+
+# yarn
+yarn dev
+
+# bun
+bun run dev
+```
+
+## Production
+
+Build the application for production:
+
+```bash
+# npm
+npm run build
+
+# pnpm
+pnpm run build
+
+# yarn
+yarn build
+
+# bun
+bun run build
+```
+
+Locally preview production build:
+
+```bash
+# npm
+npm run preview
+
+# pnpm
+pnpm run preview
+
+# yarn
+yarn preview
+
+# bun
+bun run preview
+```
+
+Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
