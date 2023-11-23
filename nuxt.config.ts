@@ -1,26 +1,24 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
 export default defineNuxtConfig({
   devtools: { enabled: true },
+  build: {
+    transpile: ['vuetify'],
+  },
   modules: [
-    '@invictus.codes/nuxt-vuetify',
+    (_options, nuxt) => {
+      nuxt.hooks.hook('vite:extendConfig', (config) => {
+        // @ts-expect-error
+        config.plugins.push(vuetify({ autoImport: true }))
+      })
+    },
     '@pinia/nuxt',
   ],
-  vuetify: {
-    /* vuetify options */
-    vuetifyOptions: {
-      // @TODO: list all vuetify options
+  vite: {
+    vue: {
+      template: {
+        transformAssetUrls,
+      },
     },
-
-    moduleOptions: {
-      /* nuxt-vuetify module options */
-      treeshaking: true | false,
-      useIconCDN: true | false,
-
-      /* vite-plugin-vuetify options */
-      styles: true | 'none' | 'expose' | 'sass' | { configFile: String },
-      autoImport: true | false,
-      useVuetifyLabs: true | false, 
-    }
-  }
+  },
 })
-
