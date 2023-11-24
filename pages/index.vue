@@ -1,14 +1,18 @@
 <template>
     <div>
         <h1>Practice page</h1>
-        Current language: {{ settingsStore.sentenceLanguage }}
+        <div>{{ sentencesStore.fetchedOriginalText }}</div>
+        <div>{{ sentencesStore.fetchedTranslatedText }}</div>
+        <v-text-field
+        :placeholder=sentencesStore.slicedOriginalText
+        ></v-text-field>
     </div>
 </template>
 
 <script setup lang='ts'>
-import { useSettingsStore } from '@/stores/settings'
+import { useSentencesStore } from '~/stores/sentences';
 
 // pinia: access the settings store
-const settingsStore = useSettingsStore()
+const sentencesStore = useSentencesStore()
 
 </script>

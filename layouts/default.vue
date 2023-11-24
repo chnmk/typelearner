@@ -141,6 +141,10 @@
       theme.global.name.value = theme.global.current.value.dark ? 'typelearnerLightTheme' : 'typelearnerDarkTheme'
     }
 
+    ///Fetching data
+    
+    //const { data: count } = await useFetch('/api/count')
+
     ///Settings Tab
 
     // pinia: access the settings store
