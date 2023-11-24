@@ -1,10 +1,12 @@
 <template>
+  <!--using vuetify "three columns" wireframe:-->
     <v-app id="inspire">
       <v-app-bar
         class="px-3"
         flat
         density="compact"
       >
+        <!--theme switch button in the top-left corner (mobile layout)-->
         <v-avatar
           color="grey-darken-1"
           class="hidden-md-and-up"
@@ -31,6 +33,7 @@
         </v-tabs>
         <v-spacer></v-spacer>
   
+        <!--theme switch button in the top-right corner (desktop layout)-->
         <v-avatar
           class="hidden-sm-and-down"
           color="grey-darken-1"
@@ -43,7 +46,12 @@
         </v-avatar>
       </v-app-bar>
   
-      <v-main> <!--<v-main class="bg-grey-lighten-3">-->
+      <!-- 
+      default: 
+      <v-main class="bg-grey-lighten-3"> 
+      (overwrites light and dark themes)
+      -->
+      <v-main> 
         <v-container>
           <v-row>
             <v-col
@@ -69,6 +77,7 @@
                 rounded="lg"
               >
                 <!-- wireframe -->
+                <!-- dynamic pages:-->
                 <NuxtPage />
                 <!-- wireframe -->
               </v-sheet>
@@ -96,8 +105,9 @@
 <script setup lang="ts">
     import { useTheme } from 'vuetify'
 
-    //wireframe
+    //wireframe links
     const links = {
+      //key is the tab title, value is the page name
       Practice: "/",
       History: "history",
       Profile: "profile",
@@ -114,10 +124,11 @@
 </script>
 
 <script lang="ts">
-    //wireframe
+    //wireframe links
     export default {
       data: () => ({
         links: {
+          //key is the tab title, value is the page name
           Practice: "index.vue",
           History: "history.vue",
           Profile: "history.vue",
