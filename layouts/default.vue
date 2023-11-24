@@ -106,6 +106,11 @@
               >
                 <!-- wireframe -->
                 <h1>Metrics</h1>
+                <div>Timer: {{ metricsStore.time }}</div>
+                <div>Average: {{ metricsStore.average }}</div>
+                <div>Counter: {{ metricsStore.answers }}</div>
+                <br>
+                <div>Characters per minute: {{ metricsStore.speed }}</div>
                 <!-- wireframe -->
               </v-sheet>
             </v-col>
@@ -118,9 +123,6 @@
 <script setup lang="ts">
     import { useTheme } from 'vuetify'
     import { useSettingsStore } from '@/stores/settings'
-
-    // pinia: access the settings store
-    const settingsStore = useSettingsStore()
 
     ///Header Tab
 
@@ -140,6 +142,9 @@
     }
 
     ///Settings Tab
+
+    // pinia: access the settings store
+    const settingsStore = useSettingsStore()
 
     //v-select events
     function interfaceLanguageChange(event: string | null) {
@@ -165,6 +170,9 @@
     }
 
     ///Metrics Tab
+
+    // pinia: access the metrics store
+    const metricsStore = useMetricsStore() 
 
     //...
     
