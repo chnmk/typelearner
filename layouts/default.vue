@@ -18,9 +18,10 @@
           color="grey-darken-2"
         >
           <v-tab
-            v-for="link in links"
-            :key="link"
-            :text="link"
+            v-for="link, key in links"
+            :key="key"
+            :text="key"
+            :to="link"
           ></v-tab>
         </v-tabs>
         <v-spacer></v-spacer>
@@ -43,8 +44,9 @@
                 rounded="lg"
                 min-height="268"
               >
-                <!--  -->
+                <!-- wireframe -->
                 Settings
+                <!-- wireframe -->
               </v-sheet>
             </v-col>
   
@@ -56,8 +58,9 @@
                 min-height="70vh"
                 rounded="lg"
               >
-                <!--  -->
-                Main Page
+                <!-- wireframe -->
+                <NuxtPage />
+                <!-- wireframe -->
               </v-sheet>
             </v-col>
   
@@ -69,8 +72,9 @@
                 rounded="lg"
                 min-height="268"
               >
-                <!--  -->
+                <!-- wireframe -->
                 Metrics
+                <!-- wireframe -->
               </v-sheet>
             </v-col>
           </v-row>
@@ -80,23 +84,27 @@
 </template>
 
 <script setup lang="ts">
-    const links = [
-      'Practice',
-      'History',
-      'Profile',
-      'About',
-    ]
+//wireframe
+    const links = {
+      Practice: "/",
+      History: "history",
+      Profile: "profile",
+      About: "about"
+    }
+    
 </script>
 
 <script lang="ts">
+    //wireframe
     export default {
       data: () => ({
-        links: [
-          'Practice',
-          'History',
-          'Profile',
-          'About',
-        ],
+        links: {
+          Practice: "index.vue",
+          History: "history.vue",
+          Profile: "history.vue",
+          About: "history.vue"
+        }
       }),
     }
+    
 </script>
