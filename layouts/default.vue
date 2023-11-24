@@ -63,7 +63,20 @@
                 min-height="268"
               >
                 <!-- wireframe -->
-                Settings
+                <h1>Settings</h1>
+                <br>
+                <v-select
+                  label="Interface Language"
+                  :items="['Russian', 'English']"
+                  placeholder="Russian"
+                  @update:modelValue="interfaceLanguageChange($event)"
+                ></v-select>
+                <v-select
+                  label="Sentences Language"
+                  :items="['English', 'Russian', 'Japanese', 'Hebrew']"
+                  placeholder="English"
+                  @update:modelValue="sentenceLanguageChange($event)"
+                ></v-select>
                 <!-- wireframe -->
               </v-sheet>
             </v-col>
@@ -92,7 +105,7 @@
                 min-height="268"
               >
                 <!-- wireframe -->
-                Metrics
+                <h1>Metrics</h1>
                 <!-- wireframe -->
               </v-sheet>
             </v-col>
@@ -104,6 +117,12 @@
 
 <script setup lang="ts">
     import { useTheme } from 'vuetify'
+    import { useSettingsStore } from '@/stores/settings'
+
+    // pinia: access the settings store
+    const settingsStore = useSettingsStore()
+
+    ///Header Tab
 
     //wireframe links
     const links = {
@@ -120,21 +139,33 @@
       theme.global.name.value = theme.global.current.value.dark ? 'typelearnerLightTheme' : 'typelearnerDarkTheme'
     }
 
-    
-</script>
+    ///Settings Tab
 
-<script lang="ts">
-    //wireframe links
-    export default {
-      data: () => ({
-        links: {
-          //key is the tab title, value is the page name
-          Practice: "index.vue",
-          History: "history.vue",
-          Profile: "history.vue",
-          About: "history.vue"
-        }
-      }),
+    //v-select events
+    function interfaceLanguageChange(event: string | null) {
+      //todo: rewrite for better scalability
+      if (event == "Russian") {
+        settingsStore.userLanguage = "rus"
+      } else if (event == "English") {
+        settingsStore.userLanguage = "eng"
+      } 
     }
+
+    function sentenceLanguageChange(event: string | null) {
+      //todo: rewrite for better scalability
+      if (event == "Russian") {
+        settingsStore.sentenceLanguage = "rus"
+      } else if (event == "English") {
+        settingsStore.sentenceLanguage = "eng"
+      } else if (event == "Japanese") {
+        settingsStore.sentenceLanguage = "jpn"
+      } else if (event == "Hebrew") {
+        settingsStore.sentenceLanguage = "heb"
+      }
+    }
+
+    ///Metrics Tab
+
+    //...
     
 </script>
