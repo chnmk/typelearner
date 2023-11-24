@@ -43,7 +43,7 @@
         </v-avatar>
       </v-app-bar>
   
-      <v-main class="bg-grey-lighten-3">
+      <v-main> <!--<v-main class="bg-grey-lighten-3">-->
         <v-container>
           <v-row>
             <v-col
@@ -107,7 +107,7 @@
     //toggle theme
     const theme = useTheme()
     function toggleTheme () {
-      theme.global.name.value = theme.global.current.value.dark ? 'light' : 'dark'
+      theme.global.name.value = theme.global.current.value.dark ? 'typelearnerLightTheme' : 'typelearnerDarkTheme'
     }
 
     
