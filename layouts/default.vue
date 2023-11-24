@@ -6,10 +6,15 @@
         density="compact"
       >
         <v-avatar
-          color="purple-lighten-1"
+          color="grey-darken-1"
           class="hidden-md-and-up"
           size="32"
-        ></v-avatar>
+          @click="toggleTheme"
+        >
+          <v-icon 
+            icon="mdi-theme-light-dark"
+          ></v-icon>
+        </v-avatar>
   
         <v-spacer></v-spacer>
   
@@ -28,9 +33,14 @@
   
         <v-avatar
           class="hidden-sm-and-down"
-          color="purple-lighten-1"
+          color="grey-darken-1"
           size="32"
-        ></v-avatar>
+          @click="toggleTheme"
+          >
+          <v-icon 
+            icon="mdi-theme-light-dark"
+          ></v-icon>
+        </v-avatar>
       </v-app-bar>
   
       <v-main class="bg-grey-lighten-3">
@@ -84,13 +94,22 @@
 </template>
 
 <script setup lang="ts">
-//wireframe
+    import { useTheme } from 'vuetify'
+
+    //wireframe
     const links = {
       Practice: "/",
       History: "history",
       Profile: "profile",
       About: "about"
     }
+
+    //toggle theme
+    const theme = useTheme()
+    function toggleTheme () {
+      theme.global.name.value = theme.global.current.value.dark ? 'light' : 'dark'
+    }
+
     
 </script>
 
