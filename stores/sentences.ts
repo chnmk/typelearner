@@ -1,4 +1,5 @@
 import { defineStore } from 'pinia'
+import { useSettingsStore } from '@/stores/settings'
 
 //using setup stores, rather than option stores:
 export const useSentencesStore = defineStore('sentences', {
@@ -12,4 +13,54 @@ export const useSentencesStore = defineStore('sentences', {
             fetchedRussianPreload: "Loading...",
         }
       },
+    actions: {
+        /*
+        TODO:
+        Prevent english-english, russian-russian sentences fetching
+        Add sliced text
+        Add preload
+        Add russian API structure
+        */
+        async changeSentence() {
+            //Import settings store to check required languages: 
+            const settingsStore = useSettingsStore()
+
+            //Create a function to fetch random API page for required languages:
+            function urlBuilder(userLang: string, sentLang: string): string {
+                const randomPage = String(Math.floor(Math.random() * 101))
+                return 'https://api.dev.tatoeba.org/unstable/sentences?lang=' + sentLang + '&trans=' + userLang + '&page=' + randomPage
+            }
+            
+            //Check console.log(fetchedObject.data[randomElement]) for JSON structure:
+            interface fetchedObjectStructure {  
+                //Only list necessary objects:
+                data: Array<{
+                    text: string,
+                    translations: 
+                        Array<
+                            Array<
+                                {text:string}
+                            >
+                        >
+                    }>;
+                //Could be useful later:
+                paging: object;
+            }    
+            
+            //Fetch random API page:
+            const fetchedObject: fetchedObjectStructure = await $fetch<fetchedObjectStructure>(
+                urlBuilder(settingsStore.userLanguage, settingsStore.sentenceLanguage)
+                )
+                .catch((error) => error.data)
+            
+            //Get random sentence and translation from the fethced page:
+            const randomElement = Math.floor(Math.random() * 10)
+            this.fetchedOriginalText = fetchedObject.data[randomElement].text
+            this.fetchedTranslatedText = fetchedObject.data[randomElement].translations[0][0].text
+
+            //Debug:
+            console.log(fetchedObject.data[randomElement])
+            console.log(this.fetchedTranslatedText)
+        },
+    },
   })

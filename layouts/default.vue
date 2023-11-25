@@ -63,16 +63,17 @@
                 min-height="268"
               >
                 <!-- wireframe -->
-                <h1>Settings</h1>
+                <h2>Settings</h2>
                 <br>
+                <!--Interface language is the correct name here-->
                 <v-select
-                  label="Interface Language"
+                  label="Translation Language" 
                   :items="['Russian', 'English']"
                   placeholder="Russian"
                   @update:modelValue="interfaceLanguageChange($event)"
                 ></v-select>
                 <v-select
-                  label="Sentences Language"
+                  label="Original Language"
                   :items="['English', 'Russian', 'Japanese', 'Hebrew']"
                   placeholder="English"
                   @update:modelValue="sentenceLanguageChange($event)"
@@ -105,7 +106,7 @@
                 min-height="268"
               >
                 <!-- wireframe -->
-                <h1>Metrics</h1>
+                <h2>Metrics</h2>
                 <div>Timer: {{ metricsStore.time }}</div>
                 <div>Average: {{ metricsStore.average }}</div>
                 <div>Counter: {{ metricsStore.answers }}</div>
@@ -123,6 +124,14 @@
 <script setup lang="ts">
     import { useTheme } from 'vuetify'
     import { useSettingsStore } from '@/stores/settings'
+    import { useMetricsStore } from '@/stores/metrics'
+    import { useSentencesStore } from '@/stores/sentences'
+
+    //Get the first sentence immediately:
+    const sentencesStore = useSentencesStore() 
+    sentencesStore.changeSentence()
+
+    ///=================================
 
     ///Header Tab
 
@@ -141,13 +150,11 @@
       theme.global.name.value = theme.global.current.value.dark ? 'typelearnerLightTheme' : 'typelearnerDarkTheme'
     }
 
-    ///Fetching data
-    
-    //const { data: count } = await useFetch('/api/count')
+    ///=================================
 
     ///Settings Tab
 
-    // pinia: access the settings store
+    //pinia: access the settings store
     const settingsStore = useSettingsStore()
 
     //v-select events
@@ -172,6 +179,8 @@
         settingsStore.sentenceLanguage = "heb"
       }
     }
+
+    ///=================================
 
     ///Metrics Tab
 

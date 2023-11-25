@@ -1,11 +1,20 @@
 <template>
     <div>
-        <h1>Practice page</h1>
+        <h1>typelearner</h1>
+        <br>
         <div>{{ sentencesStore.fetchedOriginalText }}</div>
         <div>{{ sentencesStore.fetchedTranslatedText }}</div>
+
         <v-text-field
-        :placeholder=sentencesStore.slicedOriginalText
-        ></v-text-field>
+            :placeholder=sentencesStore.slicedOriginalText
+            >
+        </v-text-field>
+
+        <v-btn
+            @click='sentencesStore.changeSentence()'
+            >
+            Change sentence
+        </v-btn>
     </div>
 </template>
 
