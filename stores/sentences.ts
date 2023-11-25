@@ -16,8 +16,13 @@ export const useSentencesStore = defineStore('sentences', {
     actions: {
         /*
         TODO:
-        Add sliced text
         Add preload
+        ...
+        Input tracking
+        Metrics
+        History
+        Interface
+        Other pages
         */
 
         async changeSentence() {
@@ -28,8 +33,8 @@ export const useSentencesStore = defineStore('sentences', {
             function urlBuilder(userLang: string, sentLang: string): string {
                 let randomPage = String(Math.floor(Math.random() * 101))
                 //Since there is no API page 0 (apparently this may happen):
-                if (randomPage == 0) {
-                    randomPage = 1
+                if (randomPage == "0") {
+                    randomPage = "1"
                 }
                 return 'https://api.dev.tatoeba.org/unstable/sentences?lang=' + sentLang + '&trans=' + userLang + '&page=' + randomPage
             }
@@ -71,7 +76,14 @@ export const useSentencesStore = defineStore('sentences', {
                 }
             //In case both #0 and #1 translations are empty (it has never happened so far):
             } catch (err) {
-                this.fetchedRussianText = "error (handle later)"
+                this.fetchedOriginalText = "error (handle later)"
+            }
+
+            //slicedOriginalText variable is used to display "..." at the end of long input placeholders.
+            if (this.fetchedOriginalText.length > 10) {
+                this.slicedOriginalText = this.fetchedOriginalText.slice(0,10) + "..."
+            } else {
+                this.slicedOriginalText = this.fetchedOriginalText
             }
 
             //Debug data:
