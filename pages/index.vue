@@ -2,7 +2,7 @@
     <div>
         <h1>typelearner</h1>
         <br>
-        <div>{{ sentencesStore.fetchedOriginalText }}</div>
+        <div><b>{{ sentencesStore.fetchedOriginalText }}</b></div>
         <div>{{ sentencesStore.fetchedTranslatedText }}</div>
 
         <v-text-field

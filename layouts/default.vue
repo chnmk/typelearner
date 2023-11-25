@@ -67,15 +67,15 @@
                 <br>
                 <!--Interface language is the correct name here-->
                 <v-select
-                  label="Translation Language" 
+                  label="User Language" 
                   :items="['Russian', 'English']"
-                  placeholder="Russian"
+                  placeholder="English"
                   @update:modelValue="interfaceLanguageChange($event)"
                 ></v-select>
                 <v-select
                   label="Original Language"
                   :items="['English', 'Russian', 'Japanese', 'Hebrew']"
-                  placeholder="English"
+                  placeholder="Japanese"
                   @update:modelValue="sentenceLanguageChange($event)"
                 ></v-select>
                 <!-- wireframe -->
@@ -159,24 +159,30 @@
 
     //v-select events
     function interfaceLanguageChange(event: string | null) {
-      //todo: rewrite for better scalability
+      //TODO: rewrite for better scalability
       if (event == "Russian") {
         settingsStore.userLanguage = "rus"
+        sentencesStore.changeSentence()
       } else if (event == "English") {
         settingsStore.userLanguage = "eng"
+        sentencesStore.changeSentence()
       } 
     }
 
     function sentenceLanguageChange(event: string | null) {
-      //todo: rewrite for better scalability
+      //TODO: rewrite for better scalability
       if (event == "Russian") {
         settingsStore.sentenceLanguage = "rus"
+        sentencesStore.changeSentence()
       } else if (event == "English") {
         settingsStore.sentenceLanguage = "eng"
+        sentencesStore.changeSentence()
       } else if (event == "Japanese") {
         settingsStore.sentenceLanguage = "jpn"
+        sentencesStore.changeSentence()
       } else if (event == "Hebrew") {
         settingsStore.sentenceLanguage = "heb"
+        sentencesStore.changeSentence()
       }
     }
 
