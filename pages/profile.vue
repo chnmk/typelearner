@@ -1,5 +1,7 @@
 <template>
     <div>
-        Profile page
+        <h1>Profile page</h1>
+        <br>
+        <div>Nothing here yet...</div>
     </div>
 </template>
