@@ -17,8 +17,6 @@ export const useSentencesStore = defineStore('sentences', {
     actions: {
         /*
         TODO:
-        Add preload
-        ...
         Input tracking
         Metrics
         History
