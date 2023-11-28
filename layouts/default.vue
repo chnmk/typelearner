@@ -128,8 +128,8 @@
     import { useSentencesStore } from '@/stores/sentences'
 
     //Get the first sentence immediately:
-    const sentencesStore = useSentencesStore() 
-    sentencesStore.changeSentence()
+    const metricsStore = useMetricsStore() 
+    metricsStore.changeSentence(false)
 
     ///=================================
 
@@ -154,8 +154,9 @@
 
     ///Settings Tab
 
-    //pinia: access the settings store
+    //pinia: access settings and sentences stores
     const settingsStore = useSettingsStore()
+    const sentencesStore = useSentencesStore() 
 
     //v-select events
     function interfaceLanguageChange(event: string | null) {
@@ -166,7 +167,7 @@
       } else if (event == "English") {
         settingsStore.userLanguage = "eng"
       }
-      sentencesStore.changeSentence()
+      metricsStore.changeSentence(false)
     }
 
     function sentenceLanguageChange(event: string | null) {
@@ -181,15 +182,12 @@
       } else if (event == "Hebrew") {
         settingsStore.sentenceLanguage = "heb"
       }
-      sentencesStore.changeSentence()
+      metricsStore.changeSentence(false)
     }
 
     ///=================================
 
     ///Metrics Tab
-
-    // pinia: access the metrics store
-    const metricsStore = useMetricsStore() 
 
     //...
     

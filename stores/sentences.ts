@@ -17,18 +17,9 @@ export const useSentencesStore = defineStore('sentences', {
         }
       },
     actions: {
-        /*
-        TODO:
-        Input tracking
-        Metrics
-        History
-        Interface
-        Other pages
-        */
-
-        //changeSentence() and preloadSentence() are currently implemented as separate functions
-        //to avoid calling function inside itself in a store file.
-        async changeSentence() {
+        //fetchSentence() is triggered by changeSentence() in metrics store.
+        //fetchSentence() and preloadSentence() are currently implemented as separate functions.
+        async fetchSentence() {
             //Check if a preloaded sentence already exists. If not, load a new sentence:
             if (!this.isPreloaded) {
                 //Import settings store to check required languages: 
@@ -111,7 +102,7 @@ export const useSentencesStore = defineStore('sentences', {
         },
 
         //Preload is necessary to avoid delay between the sentences.
-        //Differences from changeSentence() function are marked with comments:
+        //Differences from fetchSentence() function are marked with comments:
         async preloadSentence() {
             const settingsStore = useSettingsStore()
  
