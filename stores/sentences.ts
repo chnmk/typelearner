@@ -11,7 +11,9 @@ export const useSentencesStore = defineStore('sentences', {
             fetchedOriginalPreload: "Loading...",
             slicedOriginalPreload: "Loading...",
             fetchedTranslatedPreload: "Loading...",
-            isPreloaded: false
+            isPreloaded: false,
+            isTextCorrect: false,
+            isTextWrong: false,
         }
       },
     actions: {
