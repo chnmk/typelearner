@@ -160,30 +160,28 @@
     //v-select events
     function interfaceLanguageChange(event: string | null) {
       //TODO: rewrite for better scalability
+      sentencesStore.isPreloaded = false
       if (event == "Russian") {
         settingsStore.userLanguage = "rus"
-        sentencesStore.changeSentence()
       } else if (event == "English") {
         settingsStore.userLanguage = "eng"
-        sentencesStore.changeSentence()
-      } 
+      }
+      sentencesStore.changeSentence()
     }
 
     function sentenceLanguageChange(event: string | null) {
       //TODO: rewrite for better scalability
+      sentencesStore.isPreloaded = false
       if (event == "Russian") {
         settingsStore.sentenceLanguage = "rus"
-        sentencesStore.changeSentence()
       } else if (event == "English") {
         settingsStore.sentenceLanguage = "eng"
-        sentencesStore.changeSentence()
       } else if (event == "Japanese") {
         settingsStore.sentenceLanguage = "jpn"
-        sentencesStore.changeSentence()
       } else if (event == "Hebrew") {
         settingsStore.sentenceLanguage = "heb"
-        sentencesStore.changeSentence()
       }
+      sentencesStore.changeSentence()
     }
 
     ///=================================

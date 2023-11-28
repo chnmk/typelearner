@@ -101,7 +101,7 @@ export const useSentencesStore = defineStore('sentences', {
             } else {
                 this.fetchedOriginalText = this.fetchedOriginalPreload
                 this.slicedOriginalText = this.slicedOriginalPreload
-                this.fetchedTranslatedPreload = this.fetchedTranslatedPreload
+                this.fetchedTranslatedText = this.fetchedTranslatedPreload
                 this.isPreloaded = false
                 //console.log("Data overwriten!")
                 this.preloadSentence()
@@ -139,8 +139,8 @@ export const useSentencesStore = defineStore('sentences', {
                 )
                 .catch((error) => error.data)
             
-            //fetchedOriginalText -> fetchedOriginalPreload
             const randomElement = Math.floor(Math.random() * 10)
+            //fetchedOriginalText -> fetchedOriginalPreload
             this.fetchedOriginalPreload = fetchedObject.data[randomElement].text
 
             try {
