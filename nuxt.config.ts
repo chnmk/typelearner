@@ -1,6 +1,10 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
 export default defineNuxtConfig({
+  app: {
+    baseURL: '/typelearner/',
+    buildAssetsDir: 'assets',
+  },
   devtools: { enabled: true },
   build: {
     transpile: ['vuetify'],
