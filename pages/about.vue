@@ -1,13 +1,35 @@
 <template>
     <div>
-        <h1>About page</h1>
+        <h1 class="sheet-header">About page</h1>
         <br>
-        <div>Nothing here yet...</div>
+        <div class="placeholder">Nothing here yet...</div>
         <br>
-        <div>This application is intended for language learning.</div>
         <br>
-        <div>Source code: <a href="https://github.com/chnmk/typelearner">github.com</a>.</div>
         <br>
-        <div>All sentences are loaded from <a href="https://tatoeba.org/">tatoeba.org</a> API.</div>
+        <div class="about-text">
+            Source code: <a href="https://github.com/chnmk/typelearner">GitHub</a>
         </div>
+        <br>
+        <div class="about-text">
+            Sentences source: <a href="https://tatoeba.org/">Tatoeba</a>
+        </div>
+    </div>
 </template>
+
+<style scoped>
+h1 {
+    padding-top: 20px;
+    margin-bottom: 10px;
+}
+
+.placeholder {
+    color:lightgrey; 
+    font-style:italic;
+    text-align: center;
+    font-size: 25px;
+}
+
+.about-text {
+    margin-left: 5%
+}
+</style>

@@ -5,6 +5,7 @@
         class="px-3"
         flat
         density="compact"
+        elevation="1"
       >
         <!--theme switch button in the top-left corner (mobile layout)-->
         <v-avatar
@@ -22,7 +23,7 @@
   
         <v-tabs
           centered
-          color="grey-darken-2"
+          color="purple"          
         >
           <v-tab
             v-for="link, key in links"
@@ -59,24 +60,32 @@
               md="2"
             >
               <v-sheet
-                rounded="lg"
+                rounded="rounded"
                 min-height="268"
+                elevation="1"
+                style="margin-top: 25px;"
               >
                 <!-- wireframe -->
-                <h2>Settings</h2>
-                <br>
+                <p class="sheet-header">Settings</p>
+                <hr>
                 <!--Interface language is the correct name here-->
                 <v-select
                   label="User Language" 
                   :items="['Russian', 'English']"
                   placeholder="English"
                   @update:modelValue="interfaceLanguageChange($event)"
+                  variant="solo"
+                  class="vuetify-components"
+                  rounded="sm"
                 ></v-select>
                 <v-select
                   label="Original Language"
                   :items="['English', 'Russian', 'Japanese', 'Hebrew']"
                   placeholder="Japanese"
                   @update:modelValue="sentenceLanguageChange($event)"
+                  variant="solo"
+                  class="vuetify-components"
+                  rounded="sm"
                 ></v-select>
                 <!-- wireframe -->
               </v-sheet>
@@ -88,7 +97,8 @@
             >
               <v-sheet
                 min-height="70vh"
-                rounded="lg"
+                rounded="rounded"
+                elevation="1"
               >
                 <!-- wireframe -->
                 <!-- dynamic pages:-->
@@ -102,16 +112,42 @@
               md="2"
             >
               <v-sheet
-                rounded="lg"
+                rounded="rounded"
                 min-height="268"
+                elevation="1"
+                style="margin-top: 25px;"
+                
               >
                 <!-- wireframe -->
-                <h2>Metrics</h2>
-                <div>Timer: {{ metricsStore.time }}</div>
-                <div>Average: {{ metricsStore.average }}</div>
-                <div>Counter: {{ metricsStore.answers }}</div>
-                <br>
-                <div>Characters per minute: {{ metricsStore.speed }}</div>
+                <p class="sheet-header">Metrics</p>
+                <hr>
+                <div class="metrics-tab">
+                  <span>Timer: </span> 
+                    <span class="metrics-numbers">
+                      {{ metricsStore.time }}
+                    </span><!--
+                  --><span class="m-space">&nbsp;</span>s
+                  <br>
+                  <span>Average: </span>
+                    <span class="metrics-numbers">
+                      {{ metricsStore.average }}
+                    </span><!--
+                  --><span class="m-space">&nbsp;</span>s
+                  <br>
+                  <span>Counter: </span>
+                    <span class="metrics-numbers">
+                      {{ metricsStore.answers }}
+                    </span><!--
+                  --><span class="m-space">&nbsp;</span>x
+                  <br>
+                  <br>
+                  <span>Characters per minute: </span>
+                    <span class="metrics-numbers">
+                      {{ metricsStore.speed }}
+                    </span><!--
+                  --><span class="m-space">&nbsp;</span>x
+                  <br>
+                </div>
                 <!-- wireframe -->
               </v-sheet>
             </v-col>
@@ -184,11 +220,40 @@
       }
       metricsStore.changeSentence(false)
     }
-
-    ///=================================
-
-    ///Metrics Tab
-
-    //...
     
 </script>
+
+<style>
+.sheet-header {
+  font-weight: bold;
+  font-size: 24px;
+  text-align: center;
+  padding: 5px;
+}
+
+.vuetify-components {
+  max-width: 90%;
+  margin-left: 5%;
+}
+
+</style>
+
+<style scoped>
+hr {
+  margin: 5px 25px 25px 25px;
+  color: purple;
+}
+
+.metrics-tab {
+  margin-left: 5%;
+}
+
+.m-space {
+  font-size: 9px;
+}
+
+.metrics-numbers {
+  font-weight: bold;
+  font-size: 20px;
+}
+</style>
