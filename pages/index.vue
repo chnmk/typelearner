@@ -133,6 +133,7 @@ hr {
     border: 2px solid purple;
     margin: 0% 5% 0% 5%;
     height: 350px;
+    border-radius: 5px;
 }
 
 .original-text {

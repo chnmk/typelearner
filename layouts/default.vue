@@ -53,11 +53,11 @@
       (overwrites light and dark themes)
       -->
       <v-main> 
-        <v-container>
+        <v-container :fluid=true>
           <v-row>
             <v-col
               cols="12"
-              md="2"
+              lg="2"
             >
               <v-sheet
                 rounded="rounded"
@@ -68,9 +68,9 @@
                 <!-- wireframe -->
                 <p class="sheet-header">Settings</p>
                 <hr>
-                <!--Interface language is the correct name here-->
+                <!--"Interface language" is the correct name here-->
                 <v-select
-                  label="User Language" 
+                  label="Translation" 
                   :items="['Russian', 'English']"
                   placeholder="English"
                   @update:modelValue="interfaceLanguageChange($event)"
@@ -79,7 +79,7 @@
                   rounded="sm"
                 ></v-select>
                 <v-select
-                  label="Original Language"
+                  label="Original"
                   :items="['English', 'Russian', 'Japanese', 'Hebrew']"
                   placeholder="Japanese"
                   @update:modelValue="sentenceLanguageChange($event)"
@@ -93,7 +93,7 @@
   
             <v-col
               cols="12"
-              md="8"
+              lg="8"
             >
               <v-sheet
                 min-height="70vh"
@@ -109,7 +109,7 @@
   
             <v-col
               cols="12"
-              md="2"
+              lg="2"
             >
               <v-sheet
                 rounded="rounded"

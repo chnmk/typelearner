@@ -25,8 +25,8 @@ export default defineNuxtPlugin((app) => {
       themes: {
         typelearnerLightTheme,
         typelearnerDarkTheme,
-      },
-    },
+      }
+    }
   })
   app.vueApp.use(vuetify)
 })
