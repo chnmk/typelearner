@@ -71,7 +71,7 @@
                 <!--"Interface language" is the correct name here-->
                 <v-select
                   label="Translation" 
-                  :items="['Russian', 'English']"
+                  :items="['English', 'Russian']"
                   placeholder="English"
                   @update:modelValue="interfaceLanguageChange($event)"
                   variant="solo"
@@ -80,8 +80,8 @@
                 ></v-select>
                 <v-select
                   label="Original"
-                  :items="['English', 'Russian', 'Japanese', 'Hebrew']"
-                  placeholder="Japanese"
+                  :items="['English', 'Spanish', 'Russian', 'Japanese', 'Hebrew']"
+                  placeholder="Spanish"
                   @update:modelValue="sentenceLanguageChange($event)"
                   variant="solo"
                   class="vuetify-components"
@@ -217,6 +217,8 @@
         settingsStore.sentenceLanguage = "jpn"
       } else if (event == "Hebrew") {
         settingsStore.sentenceLanguage = "heb"
+      } else if (event == "Spanish") {
+        settingsStore.sentenceLanguage = "spa"
       }
       metricsStore.changeSentence(false)
     }
