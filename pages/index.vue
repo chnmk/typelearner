@@ -42,9 +42,11 @@
 import { useMetricsStore } from '~/stores/metrics';
 import { useSentencesStore } from '~/stores/sentences';
 import { useUserInputStore } from '~/stores/userInput';
+import { useSettingsStore } from '~/stores/settings';
 
 //pinia: access the stores
 const metricsStore = useMetricsStore()
+const settingsStore = useSettingsStore()
 const sentencesStore = useSentencesStore()
 const userInputStore = useUserInputStore()
 
@@ -86,7 +88,7 @@ function changeInputValue(event: string) {
     if (event == sentencesStore.fetchedOriginalText) {
         inputFieldColor = ""
         clearInterval(intervalVariable)
-        metricsStore.changeSentence(true)
+        metricsStore.changeSentence(true, settingsStore.repeatCheckbox)
     }
 }
 
@@ -95,7 +97,7 @@ function buttonChangeSentence() {
     //Input clear should go before clearInterval:
     userInputStore.inputText = ""
     clearInterval(intervalVariable)
-    metricsStore.changeSentence(false)
+    metricsStore.changeSentence(false, settingsStore.repeatCheckbox)
 }
 
 </script>

@@ -5,7 +5,8 @@ export const useSettingsStore = defineStore('settings', {
     state: () => {
         return {
             userLanguage: 'eng',
-            sentenceLanguage: 'spa'
+            sentenceLanguage: 'spa',
+            repeatCheckbox: false
         }
       },
   })

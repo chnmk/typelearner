@@ -61,7 +61,7 @@
             >
               <v-sheet
                 rounded="rounded"
-                min-height="268"
+                min-height="312"
                 elevation="1"
                 style="margin-top: 25px;"
               >
@@ -87,6 +87,11 @@
                   class="vuetify-components"
                   rounded="sm"
                 ></v-select>
+                <v-checkbox 
+                  label="Repeat sentence"
+                  class="vuetify-components"
+                  v-model="settingsStore.repeatCheckbox"
+                ></v-checkbox>
                 <!-- wireframe -->
               </v-sheet>
             </v-col>
@@ -113,10 +118,9 @@
             >
               <v-sheet
                 rounded="rounded"
-                min-height="268"
+                min-height="312"
                 elevation="1"
                 style="margin-top: 25px;"
-                
               >
                 <!-- wireframe -->
                 <p class="sheet-header">Metrics</p>
@@ -163,10 +167,13 @@
     import { useMetricsStore } from '@/stores/metrics'
     import { useSentencesStore } from '@/stores/sentences'
 
-    //Get the first sentence immediately:
+    // Get the first sentence immediately:
     const metricsStore = useMetricsStore() 
-    metricsStore.changeSentence(false)
+    metricsStore.changeSentence(false, false)
 
+    // access settings store
+    const settingsStore = useSettingsStore()
+    
     ///=================================
 
     ///Header Tab
@@ -190,8 +197,7 @@
 
     ///Settings Tab
 
-    //pinia: access settings and sentences stores
-    const settingsStore = useSettingsStore()
+    //pinia: access sentence store
     const sentencesStore = useSentencesStore() 
 
     //v-select events
@@ -203,7 +209,7 @@
       } else if (event == "English") {
         settingsStore.userLanguage = "eng"
       }
-      metricsStore.changeSentence(false)
+      metricsStore.changeSentence(false, false)
     }
 
     function sentenceLanguageChange(event: string | null) {
@@ -220,7 +226,7 @@
       } else if (event == "Spanish") {
         settingsStore.sentenceLanguage = "spa"
       }
-      metricsStore.changeSentence(false)
+      metricsStore.changeSentence(false, false)
     }
     
 </script>

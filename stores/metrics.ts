@@ -15,7 +15,7 @@ export const useMetricsStore = defineStore('metrics', {
         }
       },
       actions: {
-        changeSentence(isSentenceCorrect: boolean) {
+        changeSentence(isSentenceCorrect: boolean, isSameSentence: boolean) {
             //Load "fetchSentence()" from sentences store:
             const sentencesStore = useSentencesStore()
             //Load user input from input store:
@@ -50,7 +50,9 @@ export const useMetricsStore = defineStore('metrics', {
             this.time = 0
 
             //Fetch next sentence:
-            sentencesStore.fetchSentence()
+            if (isSameSentence === false) {
+                sentencesStore.fetchSentence()
+            }
         },
 
         addTimer() {
