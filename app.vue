@@ -3,7 +3,7 @@
       <Head>
           <Title>typelearner</Title>
           <Meta name="description" content="Yet another language learning app." />
-          <link rel="icon" type="image/x-icon" href="public/favicon.ico">/>
+          <link rel="icon" type="image/x-icon" href="favicon.ico">/>
       </Head>
 
       <Body>
