@@ -1,6 +1,14 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
 export default defineNuxtConfig({
+  ssr: true,
+  nitro: {
+    baseURL: "http://localhost:8000",
+    prerender: {
+      crawlLinks: true,
+      failOnError: false, 
+    },
+  },
   app: {
     baseURL: '/typelearner/',
     buildAssetsDir: 'assets',
