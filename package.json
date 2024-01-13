@@ -24,5 +24,7 @@
     "@pinia/nuxt": "^0.5.1",
     "pinia": "^2.1.7",
     "vite": "^5.0.11"
-  }
+  },
+  "version": "0.0.0",
+  "packageManager": "yarn@4.0.2"
 }
