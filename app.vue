@@ -1,15 +1,16 @@
 <template>
-  <Html lang="en">
-      <Head>
-          <Title>typelearner</Title>
-          <Meta name="description" content="Yet another language learning app." />
-          <link rel="icon" type="image/x-icon" href="favicon.ico">/>
-      </Head>
+    <div>
+        <NuxtLayout>
 
-      <Body>
-          <NuxtLayout>
-
-          </NuxtLayout>
-      </Body>
-  </Html>
+        </NuxtLayout>
+    </div>
 </template>
+
+<script setup lang="ts">
+useHead({
+  title: 'typelearner',
+  meta: [
+    { name: 'description', content: 'Yet another language learning app.' }
+  ]
+})
+</script>
