@@ -20,5 +20,6 @@ export default defineNuxtConfig({
         transformAssetUrls,
       },
     },
+    base: "https://chnmk.github.io/typelearner/",
   }
 })
