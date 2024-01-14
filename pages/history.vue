@@ -25,10 +25,9 @@
     </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { useHistoryStore } from '~/stores/history';
 const historyStore = useHistoryStore()
-
 </script>
 
 <style scoped>
