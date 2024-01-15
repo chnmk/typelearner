@@ -52,7 +52,11 @@
       <v-main class="bg-grey-lighten-3"> 
       (overwrites light and dark themes)
       -->
-      <v-main> 
+
+      <!-- Workaround to instantly load style -->
+      <v-main
+        style="--v-layout-top: 48px;"
+      > 
         <v-container :fluid=true>
           <v-row>
             <v-col
