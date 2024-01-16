@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia'
 import { useSettingsStore } from '@/stores/settings'
+import { useHistoryStore } from './history'
 
 //using setup stores, rather than option stores:
 export const useSentencesStore = defineStore('sentences', {
@@ -162,5 +163,17 @@ export const useSentencesStore = defineStore('sentences', {
             this.isPreloaded = true
             //console.log("Preload finished!")
         },
+
+        // Used on sentence change 
+        // when "History only" checkbox is enabled and "Repeat sentence" is not:
+        useHistorySentence() {
+            const historyStore = useHistoryStore()
+            const rng = Math.floor(Math.random() * historyStore.answersTable.length)
+
+            this.fetchedOriginalText = historyStore.answersTable[rng].Sentence
+            this.slicedOriginalText = historyStore.answersTable[rng].Sentence
+            this.fetchedTranslatedText = historyStore.answersTable[rng].Sentence
+            this.isPreloaded = false
+        }
     },
   })

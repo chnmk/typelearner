@@ -2,6 +2,7 @@ import { defineStore } from 'pinia'
 import { useSentencesStore } from '@/stores/sentences'
 import { useUserInputStore } from '@/stores/userInput'
 import { useHistoryStore } from '@/stores/history'
+import { useSettingsStore } from './settings'
 
 //using setup stores, rather than option stores:
 export const useMetricsStore = defineStore('metrics', {
@@ -15,19 +16,22 @@ export const useMetricsStore = defineStore('metrics', {
         }
       },
       actions: {
-        changeSentence(isSentenceCorrect: boolean, isSameSentence: boolean) {
+        changeSentence(isSentenceCorrect: boolean) {
             //Load "fetchSentence()" from sentences store:
             const sentencesStore = useSentencesStore()
             //Load user input from input store:
             const userInputStore = useUserInputStore()
             //Load history table from history store:
             const historyStore = useHistoryStore()
+            // Load checkbox settings from settings store:
+            const settingsStore = useSettingsStore()
 
             //Check if the sentence should be counted in metrics:
             if (isSentenceCorrect == true) {
                 //Create a new entry to the table:
                 historyStore.answerId++
                 historyStore.answersTable.unshift({id: historyStore.answerId, Sentence: sentencesStore.fetchedOriginalText, Time: this.time})
+                historyStore.answersData.unshift({Sliced: sentencesStore.slicedOriginalText, Translated: sentencesStore.fetchedTranslatedText})
                 //TODO: handle long history properly:
                 if (historyStore.answersTable.length > 7) {
                     historyStore.answersTable.pop()
@@ -50,8 +54,10 @@ export const useMetricsStore = defineStore('metrics', {
             this.time = 0
 
             //Fetch next sentence:
-            if (isSameSentence === false) {
+            if (settingsStore.repeatCheckbox === false && settingsStore.historyOnlyCheckbox === false) {
                 sentencesStore.fetchSentence()
+            } else if (settingsStore.repeatCheckbox === false && settingsStore.historyOnlyCheckbox === true) {
+                sentencesStore.useHistorySentence()
             }
         },
 

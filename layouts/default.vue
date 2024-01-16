@@ -65,7 +65,7 @@
             >
               <v-sheet
                 rounded="rounded"
-                min-height="312"
+                min-height="360"
                 elevation="1"
                 style="margin-top: 25px;"
               >
@@ -95,6 +95,15 @@
                   label="Repeat sentence"
                   class="vuetify-components"
                   v-model="settingsStore.repeatCheckbox"
+                  :hide-details="true"
+                  style="--v-input-control-height: 52px"
+                ></v-checkbox>
+                <v-checkbox 
+                  label="History only"
+                  class="vuetify-components"
+                  v-model="settingsStore.historyOnlyCheckbox"
+                  style="--v-input-control-height: 52px"
+                  :disabled="historyStore.answersTable.length === 0"
                 ></v-checkbox>
                 <!-- wireframe -->
               </v-sheet>
@@ -122,7 +131,7 @@
             >
               <v-sheet
                 rounded="rounded"
-                min-height="312"
+                min-height="360"
                 elevation="1"
                 style="margin-top: 25px;"
               >
@@ -170,13 +179,15 @@
     import { useSettingsStore } from '@/stores/settings'
     import { useMetricsStore } from '@/stores/metrics'
     import { useSentencesStore } from '@/stores/sentences'
+    import { useHistoryStore } from '@/stores/history'
 
     // Get the first sentence immediately:
     const metricsStore = useMetricsStore() 
-    metricsStore.changeSentence(false, false)
+    metricsStore.changeSentence(false)
 
-    // access settings store
+    // access settings and history stores
     const settingsStore = useSettingsStore()
+    const historyStore = useHistoryStore()
     
     ///=================================
 
@@ -213,7 +224,8 @@
       } else if (event == "English") {
         settingsStore.userLanguage = "eng"
       }
-      metricsStore.changeSentence(false, false)
+      // isSentenceCorrect, isSameSentence:
+      metricsStore.changeSentence(false)
     }
 
     function sentenceLanguageChange(event: string | null) {
@@ -230,7 +242,8 @@
       } else if (event == "Spanish") {
         settingsStore.sentenceLanguage = "spa"
       }
-      metricsStore.changeSentence(false, false)
+      // isSentenceCorrect, isSameSentence:
+      metricsStore.changeSentence(false)
     }
     
 </script>
@@ -246,6 +259,10 @@
 .vuetify-components {
   max-width: 90%;
   margin-left: 5%;
+}
+
+.vuetify-checkbox {
+  margin-bottom: 0%;
 }
 
 </style>
