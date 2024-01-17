@@ -15,7 +15,8 @@ export default defineNuxtConfig({
         config.plugins.push(vuetify({ autoImport: true }))
       })
     },
-    '@pinia/nuxt'
+    '@pinia/nuxt',
+    '@nuxt/test-utils/module'
   ],
   vite: {
     vue: {
