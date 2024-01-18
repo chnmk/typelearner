@@ -1,8 +1,8 @@
 import { test, expect, describe } from 'vitest'
 
-describe('my test', () => {
-  // ... test with Nuxt environment!
-  test('import page', async () => {
+describe('sample test', () => {
+
+  test('imports about.vue', async () => {
     const component = await import('../pages/about.vue')
     expect(component).toBeDefined()
   })
@@ -10,4 +10,5 @@ describe('my test', () => {
   test('adds 1 + 2 to equal 3', () => {
     expect(1+2).toBe(3)
   })
+  
 })

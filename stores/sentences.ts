@@ -1,6 +1,8 @@
 import { defineStore } from 'pinia'
 import { useSettingsStore } from '@/stores/settings'
 import { useHistoryStore } from './history'
+import { urlBuilder } from '~/composables/url-builder'
+import type { fetchedObjectStructure } from '~/composables/fetched-object-structure'
 
 //using setup stores, rather than option stores:
 export const useSentencesStore = defineStore('sentences', {
@@ -25,32 +27,6 @@ export const useSentencesStore = defineStore('sentences', {
             if (!this.isPreloaded) {
                 //Import settings store to check required languages: 
                 const settingsStore = useSettingsStore()
-    
-                //Create a function to fetch random API page for required languages:
-                function urlBuilder(userLang: string, sentLang: string): string {
-                    let randomPage = String(Math.floor(Math.random() * 101))
-                    //Since there is no API page 0 (apparently this may happen):
-                    if (randomPage == "0") {
-                        randomPage = "1"
-                    }
-                    return 'https://api.dev.tatoeba.org/unstable/sentences?lang=' + sentLang + '&trans=' + userLang + '&page=' + randomPage
-                }
-                
-                //Check console.log(fetchedObject.data[randomElement]) for JSON structure:
-                interface fetchedObjectStructure {  
-                    //Only list necessary objects:
-                    data: Array<{
-                        text: string,
-                        translations: 
-                            Array<
-                                Array<
-                                    {text:string}
-                                >
-                            >
-                        }>;
-                    //Could be useful for other languages:
-                    paging: object;
-                }    
                 
                 //Fetch random API page:
                 const fetchedObject: fetchedObjectStructure = await $fetch<fetchedObjectStructure>(
@@ -107,14 +83,6 @@ export const useSentencesStore = defineStore('sentences', {
         async preloadSentence() {
             const settingsStore = useSettingsStore()
  
-            function urlBuilder(userLang: string, sentLang: string): string {
-                let randomPage = String(Math.floor(Math.random() * 101))
-                if (randomPage == "0") {
-                    randomPage = "1"
-                }
-                return 'https://api.dev.tatoeba.org/unstable/sentences?lang=' + sentLang + '&trans=' + userLang + '&page=' + randomPage
-            }
-            
             interface fetchedObjectStructure {  
                 data: Array<{
                     text: string,
