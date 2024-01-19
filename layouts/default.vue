@@ -218,6 +218,7 @@
     //v-select events
     function interfaceLanguageChange(event: string | null) {
       //TODO: rewrite for better scalability
+      sentencesStore.isLoaded = false
       sentencesStore.isPreloaded = false
       if (event == "Russian") {
         settingsStore.userLanguage = "rus"
@@ -230,6 +231,7 @@
 
     function sentenceLanguageChange(event: string | null) {
       //TODO: rewrite for better scalability
+      sentencesStore.isLoaded = false
       sentencesStore.isPreloaded = false
       if (event == "Russian") {
         settingsStore.sentenceLanguage = "rus"

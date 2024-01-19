@@ -26,13 +26,16 @@
             Change sentence
         </v-btn>
         <hr>
-        <div class="sentences-box">
+        <div class="sentences-box" v-if="sentencesStore.isLoaded">
             <div class="original-text">
                 {{ sentencesStore.fetchedOriginalText }}
             </div>
             <div class="translated-text">
                 {{ sentencesStore.fetchedTranslatedText }}
             </div>
+        </div>
+        <div class="loading-spinner" v-if="!sentencesStore.isLoaded">
+            <v-progress-circular indeterminate />
         </div>
         <div>&nbsp;</div>
     </div>
@@ -42,11 +45,9 @@
 import { useMetricsStore } from '~/stores/metrics';
 import { useSentencesStore } from '~/stores/sentences';
 import { useUserInputStore } from '~/stores/userInput';
-import { useSettingsStore } from '~/stores/settings';
 
 //pinia: access the stores
 const metricsStore = useMetricsStore()
-const settingsStore = useSettingsStore()
 const sentencesStore = useSentencesStore()
 const userInputStore = useUserInputStore()
 
@@ -88,7 +89,7 @@ function changeInputValue(event: string) {
     if (event == sentencesStore.fetchedOriginalText) {
         inputFieldColor = ""
         clearInterval(intervalVariable)
-        metricsStore.changeSentence(true, settingsStore.repeatCheckbox)
+        metricsStore.changeSentence(true)
     }
 }
 
@@ -97,7 +98,7 @@ function buttonChangeSentence() {
     //Input clear should go before clearInterval:
     userInputStore.inputText = ""
     clearInterval(intervalVariable)
-    metricsStore.changeSentence(false, settingsStore.repeatCheckbox)
+    metricsStore.changeSentence(false)
 }
 
 </script>
@@ -136,6 +137,12 @@ hr {
     margin: 0% 5% 0% 5%;
     height: 350px;
     border-radius: 5px;
+}
+
+.loading-spinner {
+    color: purple;
+    text-align: center;
+    margin-top: 10%;
 }
 
 .original-text {

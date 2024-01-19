@@ -14,6 +14,7 @@ export const useSentencesStore = defineStore('sentences', {
             fetchedOriginalPreload: "Loading...",
             slicedOriginalPreload: "Loading...",
             fetchedTranslatedPreload: "Loading...",
+            isLoaded: false,
             isPreloaded: false,
             isTextCorrect: false,
             isTextWrong: false,
@@ -65,6 +66,7 @@ export const useSentencesStore = defineStore('sentences', {
 
                 //Start preloading the next sentence right away:
                 //console.log("Load finished!")
+                this.isLoaded = true
                 this.preloadSentence()
 
             //If there already is a preloaded sentence, overwrite data and preload a new one:
@@ -74,6 +76,7 @@ export const useSentencesStore = defineStore('sentences', {
                 this.fetchedTranslatedText = this.fetchedTranslatedPreload
                 this.isPreloaded = false
                 //console.log("Data overwriten!")
+                this.isLoaded = true
                 this.preloadSentence()
             }
         },
