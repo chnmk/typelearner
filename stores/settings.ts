@@ -7,7 +7,8 @@ export const useSettingsStore = defineStore('settings', {
             userLanguage: 'eng',
             sentenceLanguage: 'spa',
             repeatCheckbox: false,
-            historyOnlyCheckbox: false
+            hideCheckbox: false,
+            historyOnlyCheckbox: false,
         }
       },
   })

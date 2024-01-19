@@ -65,7 +65,7 @@
             >
               <v-sheet
                 rounded="rounded"
-                min-height="360"
+                min-height="412"
                 elevation="1"
                 style="margin-top: 25px;"
               >
@@ -95,6 +95,13 @@
                   label="Repeat sentence"
                   class="vuetify-components"
                   v-model="settingsStore.repeatCheckbox"
+                  :hide-details="true"
+                  style="--v-input-control-height: 52px"
+                ></v-checkbox>
+                <v-checkbox 
+                  label="Hide translation"
+                  class="vuetify-components"
+                  v-model="settingsStore.hideCheckbox"
                   :hide-details="true"
                   style="--v-input-control-height: 52px"
                 ></v-checkbox>
@@ -131,7 +138,7 @@
             >
               <v-sheet
                 rounded="rounded"
-                min-height="360"
+                min-height="412"
                 elevation="1"
                 style="margin-top: 25px;"
               >

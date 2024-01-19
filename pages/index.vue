@@ -30,7 +30,7 @@
             <div class="original-text">
                 {{ sentencesStore.fetchedOriginalText }}
             </div>
-            <div class="translated-text">
+            <div class="translated-text" v-if="!settingsStore.hideCheckbox">
                 {{ sentencesStore.fetchedTranslatedText }}
             </div>
         </div>
@@ -45,11 +45,13 @@
 import { useMetricsStore } from '~/stores/metrics';
 import { useSentencesStore } from '~/stores/sentences';
 import { useUserInputStore } from '~/stores/userInput';
+import { useSettingsStore } from '~/stores/settings'
 
 //pinia: access the stores
 const metricsStore = useMetricsStore()
 const sentencesStore = useSentencesStore()
 const userInputStore = useUserInputStore()
+const settingsStore = useSettingsStore()
 
 //Declare setInterval globally 
 //Todo: move intervalVariable to metrics store (if possible)
