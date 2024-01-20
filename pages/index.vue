@@ -28,10 +28,10 @@
         </v-btn>
         <hr>
         <div class="sentences-box" v-if="sentencesStore.isLoaded">
-            <div class="original-text">
+            <div class="original-text" @click.right.prevent @copy.prevent>
                 {{ sentencesStore.fetchedOriginalText }}
             </div>
-            <div class="translated-text" v-if="!settingsStore.hideCheckbox">
+            <div class="translated-text" @click.right.prevent @copy.preven v-if="!settingsStore.hideCheckbox">
                 {{ sentencesStore.fetchedTranslatedText }}
             </div>
         </div>
