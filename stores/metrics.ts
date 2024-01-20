@@ -11,7 +11,8 @@ export const useMetricsStore = defineStore('metrics', {
             time: 0,
             answers: 0,
             average: 0,
-            speed: 0,
+            cpm: 0,
+            wpm: 0,
             isTimerStarted: false,
         }
       },
@@ -40,8 +41,9 @@ export const useMetricsStore = defineStore('metrics', {
                 this.average = Math.round(historyStore.answersTable.map(x => x.Time).reduce((a, b) => a + b, 0) / historyStore.answersTable.map(x => x.Time).length)
                 //Calculate time spent on this sentence:
                 historyStore.answersSpeed.push((sentencesStore.fetchedOriginalText.length/this.time)*60)
-                //Calculate characters per minute:
-                this.speed = Math.round(historyStore.answersSpeed.reduce((a, b) => a + b, 0) / historyStore.answersSpeed.length)
+                //Calculate characters and words per minute:
+                this.cpm = Math.round(historyStore.answersSpeed.reduce((a, b) => a + b, 0) / historyStore.answersSpeed.length)
+                this.wpm = Math.floor(this.cpm/5)
                 //Increase answers counter:
                 this.answers++
             }
