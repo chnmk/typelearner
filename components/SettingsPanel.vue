@@ -73,7 +73,6 @@ style="margin-top: 25px;"
       } else if (event == "English") {
         settingsStore.userLanguage = "eng"
       }
-      // isSentenceCorrect, isSameSentence:
       metricsStore.changeSentence(false)
     }
 
@@ -92,7 +91,6 @@ style="margin-top: 25px;"
       } else if (event == "Spanish") {
         settingsStore.sentenceLanguage = "spa"
       }
-      // isSentenceCorrect, isSameSentence:
       metricsStore.changeSentence(false)
     }
 </script>

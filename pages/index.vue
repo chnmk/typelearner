@@ -7,6 +7,7 @@
         <v-text-field
             :placeholder=sentencesStore.slicedOriginalText
             @update:modelValue="changeInputValue($event)"
+            :update:modelValue="checkIfEmpty()"
             :modelValue="userInputStore.inputText"
             :color=inputFieldColor
             base-color="purple"
@@ -53,12 +54,9 @@ const sentencesStore = useSentencesStore()
 const userInputStore = useUserInputStore()
 const settingsStore = useSettingsStore()
 
-//Declare setInterval globally 
-//Todo: move intervalVariable to metrics store (if possible)
 let intervalVariable = setInterval(metricsStore.addTimer, 1000)
 clearInterval(intervalVariable)
 
-//for "color" property on v-text-field
 //TODO: move inputFieldColor to sentences store
 let inputFieldColor = "purple"
 
@@ -101,6 +99,15 @@ function buttonChangeSentence() {
     userInputStore.inputText = ""
     clearInterval(intervalVariable)
     metricsStore.changeSentence(false)
+}
+
+function checkIfEmpty() {
+    // Reset timer on language change or input clear
+    if (userInputStore.inputText === "") {
+        clearInterval(intervalVariable)
+        metricsStore.isTimerStarted = false
+        metricsStore.time = 0
+    }
 }
 
 </script>
