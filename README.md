@@ -1,8 +1,8 @@
 # typelearner
 
 A Vue single page application for language learning.
- 
-Provides an interactive typing practice environment for random sentences fetched from [Tatoeba](https://tatoeba.org/). 
+
+Provides an interactive typing practice environment for random sentences fetched from [Tatoeba](https://tatoeba.org/).
 
 ![](/assets/preview.png "Preview")
 
@@ -12,13 +12,13 @@ This verion was built with Nuxt and Vuetify.
 
 ### TODO
 
-* Words per minute metric
-* Russian interface
-* History scrolling
-* Authentication (?)
-* About page
-* Code refactoring
-* Better scalability and more languages support
+- Words per minute metric
+- Russian interface
+- History scrolling
+- Authentication (?)
+- About page
+- Code refactoring
+- Better scalability and more languages support
 
 ## Nuxt 3 Minimal Starter
 

@@ -1,11 +1,10 @@
-import { defineStore } from 'pinia'
-import { useSentencesStore } from '@/stores/sentences'
+import { defineStore } from "pinia";
 
-//using setup stores, rather than option stores:
-export const useUserInputStore = defineStore('userInput', {
-    state: () => {
-        return {
-            inputText: ""
-        }
-    },
-  })
+// using setup stores, rather than option stores:
+export const useUserInputStore = defineStore("userInput", {
+  state: () => {
+    return {
+      inputText: "",
+    };
+  },
+});

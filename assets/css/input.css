@@ -1,17 +1,17 @@
 .wrong-input .v-label {
-    color: red;
-    opacity: 1;
-  }
+  color: red;
+  opacity: 1;
+}
 
-.wrong-input input{
-    color: red!important;
+.wrong-input input {
+  color: red !important;
 }
 
 .correct-input .v-label {
-    color: green;
-    opacity: 1;
-  }
+  color: green;
+  opacity: 1;
+}
 
-.correct-input input{
-    color: green!important;
+.correct-input input {
+  color: green !important;
 }
