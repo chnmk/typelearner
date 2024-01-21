@@ -1,7 +1,5 @@
 import { defineStore } from "pinia";
-import { useSettingsStore } from "./settings";
 import { useSentencesStore } from "@/stores/sentences";
-import { useUserInputStore } from "@/stores/userInput";
 import { useHistoryStore } from "@/stores/history";
 
 // using setup stores, rather than option stores:
@@ -17,15 +15,11 @@ export const useMetricsStore = defineStore("metrics", {
     };
   },
   actions: {
-    changeSentence(isSentenceCorrect: boolean) {
+    saveMetrics(isSentenceCorrect: boolean) {
       // Load "fetchSentence()" from sentences store:
       const sentencesStore = useSentencesStore();
-      // Load user input from input store:
-      const userInputStore = useUserInputStore();
       // Load history table from history store:
       const historyStore = useHistoryStore();
-      // Load checkbox settings from settings store:
-      const settingsStore = useSettingsStore();
 
       // Check if the sentence should be counted in metrics:
       if (isSentenceCorrect === true) {
@@ -63,26 +57,6 @@ export const useMetricsStore = defineStore("metrics", {
         this.wpm = Math.floor(this.cpm / 5);
         // Increase answers counter:
         this.answers++;
-      }
-
-      // Clear the input and metrics:
-      userInputStore.inputText = "";
-      sentencesStore.isTextCorrect = false;
-      sentencesStore.isTextWrong = false;
-      this.isTimerStarted = false;
-      this.time = 0;
-
-      // Fetch next sentence:
-      if (
-        settingsStore.repeatCheckbox === false &&
-        settingsStore.historyOnlyCheckbox === false
-      ) {
-        sentencesStore.fetchSentence();
-      } else if (
-        settingsStore.repeatCheckbox === false &&
-        settingsStore.historyOnlyCheckbox === true
-      ) {
-        sentencesStore.useHistorySentence();
       }
     },
 

@@ -95,7 +95,8 @@ function changeInputValue(event: string) {
   if (event === sentencesStore.fetchedOriginalText) {
     inputFieldColor = "";
     clearInterval(intervalVariable);
-    metricsStore.changeSentence(true);
+    metricsStore.saveMetrics(true);
+    changeSentence();
   }
 }
 
@@ -104,7 +105,8 @@ function buttonChangeSentence() {
   // Input clear should go before clearInterval:
   userInputStore.inputText = "";
   clearInterval(intervalVariable);
-  metricsStore.changeSentence(false);
+  metricsStore.saveMetrics(false);
+  changeSentence();
 }
 
 function checkIfEmpty() {

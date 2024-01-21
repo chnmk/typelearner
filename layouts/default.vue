@@ -23,11 +23,8 @@
 </template>
 
 <script setup lang="ts">
-import { useMetricsStore } from "@/stores/metrics";
-
 // Get the first sentence immediately:
-const metricsStore = useMetricsStore();
-metricsStore.changeSentence(false);
+changeSentence();
 </script>
 
 <style>

@@ -73,7 +73,8 @@ function interfaceLanguageChange(event: string | null) {
   } else if (event === "English") {
     settingsStore.userLanguage = "eng";
   }
-  metricsStore.changeSentence(false);
+  metricsStore.saveMetrics(false);
+  changeSentence();
 }
 
 function sentenceLanguageChange(event: string | null) {
@@ -91,6 +92,7 @@ function sentenceLanguageChange(event: string | null) {
   } else if (event === "Spanish") {
     settingsStore.sentenceLanguage = "spa";
   }
-  metricsStore.changeSentence(false);
+  metricsStore.saveMetrics(false);
+  changeSentence();
 }
 </script>

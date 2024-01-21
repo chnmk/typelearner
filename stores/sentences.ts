@@ -1,10 +1,8 @@
 import { defineStore } from "pinia";
 import { useHistoryStore } from "./history";
 import { useSettingsStore } from "@/stores/settings";
-import { urlBuilder } from "~/composables/url-builder";
-import type { fetchedObjectStructure } from "~/composables/fetched-object-structure";
 
-// using setup stores, rather than option stores:
+// Using setup stores, rather than option stores:
 export const useSentencesStore = defineStore("sentences", {
   state: () => {
     return {
@@ -66,12 +64,7 @@ export const useSentencesStore = defineStore("sentences", {
           this.slicedOriginalText = this.fetchedOriginalText;
         }
 
-        // Debug data:
-        // console.log(fetchedObject.data[randomElement])
-        // console.log(this.fetchedTranslatedText)
-
         // Start preloading the next sentence right away:
-        // console.log("Load finished!")
         this.isLoaded = true;
         this.preloadSentence();
 
@@ -81,7 +74,6 @@ export const useSentencesStore = defineStore("sentences", {
         this.slicedOriginalText = this.slicedOriginalPreload;
         this.fetchedTranslatedText = this.fetchedTranslatedPreload;
         this.isPreloaded = false;
-        // console.log("Data overwriten!")
         this.isLoaded = true;
         this.preloadSentence();
       }
@@ -137,7 +129,6 @@ export const useSentencesStore = defineStore("sentences", {
         this.slicedOriginalText = this.fetchedOriginalPreload;
       }
 
-      // Preloading is finished:
       this.isPreloaded = true;
       // console.log("Preload finished!")
     },
