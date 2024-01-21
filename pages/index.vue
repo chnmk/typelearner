@@ -15,6 +15,8 @@
       class="vuetify-components"
       rounded="sm"
       @update:model-value="changeInputValue($event)"
+      @paste.prevent
+      @click.right.prevent
     >
     </v-text-field>
     <v-btn rounded="sm" class="change-button" @click="buttonChangeSentence">

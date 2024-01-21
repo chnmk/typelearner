@@ -21,6 +21,12 @@ export const useMetricsStore = defineStore("metrics", {
       // Load history table from history store:
       const historyStore = useHistoryStore();
 
+      // Temporary workaround to avoid dividing by zero.
+      // TODO: replace seconds with milliseconds.
+      if (this.time === 0) {
+        this.time = 1;
+      }
+
       // Check if the sentence should be counted in metrics:
       if (isSentenceCorrect === true) {
         // Create a new entry to the table:
