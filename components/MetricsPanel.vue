@@ -63,6 +63,9 @@ const metricsStore = useMetricsStore();
   margin-left: 8%;
   margin-right: 8%;
   font-size: 16px;
+  :hover {
+    cursor: default;
+  }
 }
 
 .metrics-card {

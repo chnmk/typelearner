@@ -21,20 +21,22 @@
       Change sentence
     </v-btn>
     <hr />
-    <div v-if="sentencesStore.isLoaded" class="sentences-box">
-      <div class="original-text" @click.right.prevent @copy.prevent>
-        {{ sentencesStore.fetchedOriginalText }}
+    <v-card class="sentences-card" hover>
+      <div v-if="sentencesStore.isLoaded" class="sentences-box">
+        <div class="original-text" @click.right.prevent @copy.prevent>
+          {{ sentencesStore.fetchedOriginalText }}
+        </div>
+        <div
+          v-if="!settingsStore.hideCheckbox"
+          class="translated-text"
+          @click.right.prevent
+          @copy.prevent
+        >
+          {{ sentencesStore.fetchedTranslatedText }}
+        </div>
       </div>
-      <div
-        v-if="!settingsStore.hideCheckbox"
-        class="translated-text"
-        @click.right.prevent
-        @copy.prevent
-      >
-        {{ sentencesStore.fetchedTranslatedText }}
-      </div>
-    </div>
-    <div v-if="!sentencesStore.isLoaded" class="loading-spinner">
+    </v-card>
+    <div v-if="!sentencesStore.isLoaded" class="loading-box-spinner">
       <v-progress-circular indeterminate />
     </div>
     <div>&nbsp;</div>
@@ -110,7 +112,7 @@ function buttonChangeSentence() {
 }
 
 function checkIfEmpty() {
-  // Reset timer on language change or input clear
+  // Reset timer on language change or input clear:
   if (userInputStore.inputText === "") {
     clearInterval(intervalVariable);
     metricsStore.isTimerStarted = false;
@@ -141,17 +143,21 @@ hr {
   margin: 25px;
   /*
     color: purple;
-    */
+  */
+}
+
+.sentences-card {
+  margin: 0% 5% 0% 5%;
 }
 
 .sentences-box {
   border: 2px solid purple;
-  margin: 0% 5% 0% 5%;
-  height: 350px;
+  padding-bottom: 5%;
+  min-height: 350px;
   border-radius: 5px;
 }
 
-.loading-spinner {
+.loading-box-spinner {
   color: purple;
   text-align: center;
   margin-top: 10%;
@@ -165,7 +171,7 @@ hr {
   margin-left: 30px;
   /*
     text-align: center;
-    */
+  */
 }
 
 .translated-text {
@@ -174,6 +180,6 @@ hr {
   margin-left: 30px;
   /*
     text-align: center;
-    */
+  */
 }
 </style>

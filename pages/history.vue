@@ -28,6 +28,7 @@
           </tr>
         </tbody>
       </table>
+      <br />
     </div>
   </div>
 </template>
@@ -51,13 +52,14 @@ h1 {
 }
 
 table {
-  border: 2px solid purple;
+  border: 3px solid purple;
   margin: auto;
   width: 75%;
+  border-collapse: collapse;
 }
 
 .table-numbers {
-  border: 1px solid gray;
+  border: 2px solid gray;
   padding: 10px;
   text-align: center;
   font-size: 20px;
@@ -65,7 +67,7 @@ table {
 }
 
 .table-text {
-  border: 1px solid gray;
+  border: 2px solid gray;
   padding: 5px;
   text-align: left;
   font-size: 20px;

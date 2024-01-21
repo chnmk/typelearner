@@ -28,6 +28,11 @@ export default defineNuxtPlugin((app) => {
         typelearnerDarkTheme,
       },
     },
+    display: {
+      thresholds: {
+        xl: 1650,
+      },
+    },
   });
   app.vueApp.use(vuetify);
 });

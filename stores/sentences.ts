@@ -13,6 +13,7 @@ export const useSentencesStore = defineStore("sentences", {
       slicedOriginalPreload: "Loading...",
       fetchedTranslatedPreload: "Loading...",
       isLoaded: false,
+      appStarted: false,
       isPreloaded: false,
       isTextCorrect: false,
       isTextWrong: false,
@@ -77,6 +78,7 @@ export const useSentencesStore = defineStore("sentences", {
         this.isLoaded = true;
         this.preloadSentence();
       }
+      this.appStarted = true;
     },
 
     // Preload is necessary to avoid delay between the sentences.
