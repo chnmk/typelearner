@@ -4,7 +4,7 @@
     <br />
     <div>
       <p v-if="historyStore.answersTable.length == 0" class="placeholder">
-        Nothing here yet...
+        Complete your first sentence to view history!
       </p>
       <table v-if="historyStore.answersTable.length > 0" class="table-center">
         <thead>

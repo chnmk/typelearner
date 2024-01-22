@@ -1,12 +1,22 @@
 <template>
-  <div v-if="loggedIn">
-    <h1>Welcome {{ user.login }}!</h1>
-    <p>Logged in since {{ session.loggedInAt }}</p>
-    <button @click="clear">Logout</button>
-  </div>
-  <div v-else>
-    <h1>Not logged in</h1>
-    <a href="/api/auth/github">Login with GitHub</a>
+  <div>
+    <h1 class="sheet-header">Profile</h1>
+    <br />
+    <div v-if="loggedIn">
+      <h1>Welcome {{ user.login }}!</h1>
+      <p>Logged in since {{ session.loggedInAt }}</p>
+      <button @click="clear">Logout</button>
+    </div>
+    <div v-else class="github-login">
+      <div class="placeholder">Not logged in</div>
+      <br />
+      <br />
+      <v-btn
+        prepend-icon="mdi-account"
+        to="/api/auth/github"
+        text="Login with GitHub"
+      ></v-btn>
+    </div>
   </div>
 </template>
 
@@ -18,6 +28,10 @@ const { loggedIn, user, session, clear } = useUserSession();
 h1 {
   padding-top: 20px;
   margin-bottom: 10px;
+}
+
+.github-login {
+  text-align: center;
 }
 
 .placeholder {
