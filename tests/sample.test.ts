@@ -1,12 +1,8 @@
 import { test, expect, describe } from "vitest";
 
 describe("sample test", () => {
-  test("imports about.vue", async () => {
-    const component = await import("../pages/about.vue");
+  test("imports useApiFetch composable", async () => {
+    const component = await import("@/composables/useApiFetch");
     expect(component).toBeDefined();
-  });
-
-  test("adds 1 + 2 to equal 3", () => {
-    expect(1 + 2).toBe(3);
   });
 });
