@@ -5,7 +5,6 @@ describe("api fetch test", () => {
   test("placeholder", () => {
     expect(true).toBe(true);
   });
-  /*
   test("russian -> english random page", async () => {
     const { fetchedObj } = await useApiFetch("eng", "rus");
     expect(fetchedObj).toBeDefined();
@@ -26,5 +25,4 @@ describe("api fetch test", () => {
     const { fetchedObj } = await useApiFetch("eng", "heb", "100");
     expect(fetchedObj).toBeDefined();
   });
-  */
 });

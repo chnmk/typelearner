@@ -52,7 +52,6 @@ import { useUserInputStore } from "~/stores/userInput";
 import { useSettingsStore } from "~/stores/settings";
 import "~/assets/css/input.css";
 
-// pinia: access the stores
 const metricsStore = useMetricsStore();
 const sentencesStore = useSentencesStore();
 const userInputStore = useUserInputStore();

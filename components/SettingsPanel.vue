@@ -5,7 +5,6 @@
     elevation="1"
     style="margin-top: 25px"
   >
-    <!-- wireframe -->
     <p class="sheet-header">Settings</p>
     <hr class="header-hr" />
     <!--"Interface language" is the correct name here-->
@@ -48,7 +47,6 @@
       style="--v-input-control-height: 52px"
       :disabled="historyStore.answersTable.length === 0"
     ></v-checkbox>
-    <!-- wireframe -->
   </v-sheet>
 </template>
 

@@ -1,24 +1,23 @@
 # typelearner
 
-A Vue single page application for language learning.
+A Nuxt single page application for language learning.
 
 Provides an interactive typing practice environment for random sentences fetched from [Tatoeba](https://tatoeba.org/).
 
 ![](/assets/preview.png "Preview")
 
-Please note that the main purpose of this project is webdev practice. I currently have no intent of turning it into a serious language learning tool.
+Please note that the main purpose of this project is webdev practice. While I do have an intent of turning it into a viable language learning tool, it isn't my highest priority at the moment.
 
-This verion was built with Nuxt and Vuetify.
+This verion was built with Nuxt, Pinia and Vuetify.
 
 ### TODO
 
-- Words per minute metric
-- Russian interface
+- Interface localization
 - History scrolling
-- Authentication (?)
-- About page
-- Code refactoring
-- Better scalability and more languages support
+- Proper authentication
+- Scalability for new languages
+- UI redisign
+- Better metrics
 
 ## Nuxt 3 Minimal Starter
 
