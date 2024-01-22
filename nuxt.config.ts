@@ -21,6 +21,7 @@ export default defineNuxtConfig({
     "@pinia/nuxt",
     "@nuxt/test-utils/module",
     "@nuxtjs/eslint-module",
+    "nuxt-auth-utils",
   ],
   vite: {
     vue: {
