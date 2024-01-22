@@ -100,7 +100,7 @@ function changeInputValue(event: string) {
     inputFieldColor = "";
     clearInterval(intervalVariable);
     metricsStore.saveMetrics(true);
-    changeSentence();
+    sentencesStore.changeSentence();
   }
 }
 
@@ -110,7 +110,7 @@ function buttonChangeSentence() {
   userInputStore.inputText = "";
   clearInterval(intervalVariable);
   metricsStore.saveMetrics(false);
-  changeSentence();
+  sentencesStore.changeSentence();
 }
 
 function checkIfEmpty() {

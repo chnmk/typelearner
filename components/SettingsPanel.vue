@@ -74,7 +74,7 @@ function interfaceLanguageChange(event: string | null) {
     settingsStore.userLanguage = "eng";
   }
   metricsStore.saveMetrics(false);
-  changeSentence();
+  sentencesStore.changeSentence();
 }
 
 function sentenceLanguageChange(event: string | null) {
@@ -93,6 +93,6 @@ function sentenceLanguageChange(event: string | null) {
     settingsStore.sentenceLanguage = "spa";
   }
   metricsStore.saveMetrics(false);
-  changeSentence();
+  sentencesStore.changeSentence();
 }
 </script>

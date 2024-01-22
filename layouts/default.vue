@@ -28,10 +28,10 @@
 import { useDisplay } from "vuetify";
 import { computed } from "vue";
 import { useSentencesStore } from "~/stores/sentences";
-const sentencesStore = useSentencesStore();
 
 // Get the first sentence immediately:
-changeSentence();
+const sentencesStore = useSentencesStore();
+sentencesStore.changeSentence();
 
 // Vuetify settings:
 const { name } = useDisplay();
@@ -100,6 +100,6 @@ const colsMain = computed(() => {
 .loading-spinner {
   color: purple;
   text-align: center;
-  margin-top: 40%;
+  margin-top: 20%;
 }
 </style>

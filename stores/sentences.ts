@@ -20,6 +20,32 @@ export const useSentencesStore = defineStore("sentences", {
     };
   },
   actions: {
+    // Resets metrics and decides on how to get a new sentence,
+    // from history (useHistorySentence()) or from API (fetchSentence()):
+    changeSentence() {
+      const userInputStore = useUserInputStore();
+      const settingsStore = useSettingsStore();
+      const metricsStore = useMetricsStore();
+      // Reset values:
+      userInputStore.inputText = "";
+      this.isTextCorrect = false;
+      this.isTextWrong = false;
+      metricsStore.isTimerStarted = false;
+      metricsStore.time = 0;
+      // Fetch next sentence:
+      if (
+        settingsStore.repeatCheckbox === false &&
+        settingsStore.historyOnlyCheckbox === false
+      ) {
+        this.fetchSentence();
+      } else if (
+        settingsStore.repeatCheckbox === false &&
+        settingsStore.historyOnlyCheckbox === true
+      ) {
+        this.useHistorySentence();
+      }
+    },
+
     // fetchSentence() is triggered by changeSentence() in metrics store.
     // fetchSentence() and preloadSentence() are currently implemented as separate functions.
     async fetchSentence() {
@@ -29,27 +55,24 @@ export const useSentencesStore = defineStore("sentences", {
         const settingsStore = useSettingsStore();
 
         // Fetch random API page:
-        const fetchedObject: fetchedObjectStructure =
-          await $fetch<fetchedObjectStructure>(
-            urlBuilder(
-              settingsStore.userLanguage,
-              settingsStore.sentenceLanguage,
-            ),
-          ).catch((error) => error.data);
+        const { fetchedObj } = await useApiFetch(
+          settingsStore.userLanguage,
+          settingsStore.sentenceLanguage,
+        );
 
         // Get random sentence and translation from the fethced page:
         const randomElement = Math.floor(Math.random() * 10);
-        this.fetchedOriginalText = fetchedObject.data[randomElement].text;
+        this.fetchedOriginalText = fetchedObj.data[randomElement].text;
 
         // Sometimes the [0][0] object is empty for translations to russian language. Workaround:
         try {
           try {
             this.fetchedTranslatedText =
-              fetchedObject.data[randomElement].translations[0][0].text;
+              fetchedObj.data[randomElement].translations[0][0].text;
             // console.log("OBJECT_DEFAULT")
           } catch (err) {
             this.fetchedTranslatedText =
-              fetchedObject.data[randomElement].translations[1][0].text;
+              fetchedObj.data[randomElement].translations[1][0].text;
             // console.log("OBJECT_WORKAROUND")
           }
           // In case both #0 and #1 translations are empty (it has never happened so far):
@@ -86,35 +109,24 @@ export const useSentencesStore = defineStore("sentences", {
     async preloadSentence() {
       const settingsStore = useSettingsStore();
 
-      interface fetchedObjectStructure {
-        data: Array<{
-          text: string;
-          translations: Array<Array<{ text: string }>>;
-        }>;
-        paging: object;
-      }
-
-      const fetchedObject: fetchedObjectStructure =
-        await $fetch<fetchedObjectStructure>(
-          urlBuilder(
-            settingsStore.userLanguage,
-            settingsStore.sentenceLanguage,
-          ),
-        ).catch((error) => error.data);
+      const { fetchedObj } = await useApiFetch(
+        settingsStore.userLanguage,
+        settingsStore.sentenceLanguage,
+      );
 
       const randomElement = Math.floor(Math.random() * 10);
       // fetchedOriginalText -> fetchedOriginalPreload
-      this.fetchedOriginalPreload = fetchedObject.data[randomElement].text;
+      this.fetchedOriginalPreload = fetchedObj.data[randomElement].text;
 
       try {
         try {
           // fetchedTranslatedText -> fetchedTranslatedPreload
           this.fetchedTranslatedPreload =
-            fetchedObject.data[randomElement].translations[0][0].text;
+            fetchedObj.data[randomElement].translations[0][0].text;
         } catch (err) {
           // fetchedTranslatedText -> fetchedTranslatedPreload
           this.fetchedTranslatedPreload =
-            fetchedObject.data[randomElement].translations[1][0].text;
+            fetchedObj.data[randomElement].translations[1][0].text;
         }
       } catch (err) {
         // fetchedOriginalText -> fetchedOriginalPreload
