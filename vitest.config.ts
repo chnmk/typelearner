@@ -7,5 +7,14 @@ export default defineVitestConfig({
     globals: true,
     environment: "happy-dom",
     exclude: [...configDefaults.exclude, "tests/useApiFetch.test.ts"],
+    environmentOptions: {
+      nuxt: {
+        overrides: {
+          app: {
+            baseURL: "/",
+          },
+        },
+      },
+    },
   },
 });
