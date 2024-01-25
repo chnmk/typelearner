@@ -5,26 +5,26 @@
     elevation="1"
     style="margin-top: 25px"
   >
-    <p class="sheet-header">Metrics</p>
+    <p class="sheet-header">{{ $t("metrics") }}</p>
     <hr class="header-hr" />
     <div class="metrics-tab">
       <v-card class="metrics-card" hover>
         <div class="metrics-div">
-          <span class="counter-left">Timer: </span>
+          <span class="counter-left">{{ $t("timer") }} </span>
           <span class="counter-right">
             <span class="metrics-numbers">{{ metricsStore.time }}</span>
             <span class="m-space"> s</span>
           </span>
         </div>
         <div class="metrics-div">
-          <span class="counter-left">Average: </span>
+          <span class="counter-left">{{ $t("average") }} </span>
           <span class="counter-right">
             <span class="metrics-numbers">{{ metricsStore.average }}</span>
             <span class="m-space"> s</span>
           </span>
         </div>
         <div class="metrics-div">
-          <span class="counter-left">Counter: </span>
+          <span class="counter-left">{{ $t("counter") }} </span>
           <span class="counter-right">
             <span class="metrics-numbers">{{ metricsStore.answers }}</span>
             <span class="m-space"> x</span>
@@ -34,14 +34,14 @@
       <br />
       <v-card class="metrics-card" hover>
         <div class="metrics-div">
-          <span class="counter-left">Char / Min: </span>
+          <span class="counter-left">{{ $t("char_min") }} </span>
           <span class="counter-right">
             <span class="metrics-numbers">{{ metricsStore.cpm }}</span>
             <span class="m-space"> x</span>
           </span>
         </div>
         <div class="metrics-div">
-          <span class="counter-left">Words / Min: </span>
+          <span class="counter-left">{{ $t("words_min") }} </span>
           <span class="counter-right">
             <span class="metrics-numbers">{{ metricsStore.wpm }}</span>
             <span class="m-space"> x</span>

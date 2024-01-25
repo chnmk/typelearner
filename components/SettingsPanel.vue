@@ -5,11 +5,11 @@
     elevation="1"
     style="margin-top: 25px"
   >
-    <p class="sheet-header">Settings</p>
+    <p class="sheet-header">{{ $t("settings") }}</p>
     <hr class="header-hr" />
-    <!--"Interface language" is the correct name here-->
     <v-select
-      label="Translation"
+      v-model="locale"
+      label="Interface"
       :items="['English', 'Russian']"
       placeholder="English"
       variant="solo"
@@ -18,7 +18,7 @@
       @update:model-value="interfaceLanguageChange($event)"
     ></v-select>
     <v-select
-      label="Original"
+      label="Sentences"
       :items="['English', 'Spanish', 'Russian', 'Japanese', 'Hebrew']"
       placeholder="Spanish"
       variant="solo"
@@ -55,6 +55,8 @@ import { useHistoryStore } from "@/stores/history";
 import { useSettingsStore } from "@/stores/settings";
 import { useSentencesStore } from "@/stores/sentences";
 import { useMetricsStore } from "@/stores/metrics";
+
+const { locale } = useI18n();
 
 const metricsStore = useMetricsStore();
 const historyStore = useHistoryStore();

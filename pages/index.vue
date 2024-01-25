@@ -20,7 +20,7 @@
     >
     </v-text-field>
     <v-btn rounded="sm" class="change-button" @click="buttonChangeSentence">
-      Change sentence
+      {{ $t("change_sentence") }}
     </v-btn>
     <hr />
     <v-card class="sentences-card" hover>

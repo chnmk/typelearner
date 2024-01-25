@@ -1,19 +1,19 @@
 <template>
   <div>
-    <h1 class="sheet-header">About page</h1>
+    <h1 class="sheet-header">{{ $t("About") }}</h1>
     <br />
     <v-card class="description-card">
       <div class="about-text">
-        A language learning application with typing practice focus. Inspired by
+        {{ $t("ALanguageLearningApp") }}
         <a href="https://play.typeracer.com/">typeracer</a>
-        and
-        <a href="https://www.keybr.com/">keybr</a>. Provides a typing practice
-        environment for random sentences fetched from
+        {{ $t("and") }}
+        <a href="https://www.keybr.com/">keybr</a>.
+        {{ $t("ProvidesATyping") }}
         <a href="https://tatoeba.org/">tatoeba.org</a>.
       </div>
       <br />
       <div class="about-text">
-        Technologies used:
+        {{ $t("techused") }}
 
         <ul class="tech-list">
           <li><a href="https://vuejs.org/">Vue 3</a></li>
@@ -24,9 +24,10 @@
       </div>
       <br />
       <div class="about-text">
-        Source code: <a href="https://github.com/chnmk/typelearner">GitHub</a>.
+        {{ $t("sourcecode") }}
+        <a href="https://github.com/chnmk/typelearner">GitHub</a>.
         <br />
-        Sentences source: <a href="https://tatoeba.org/">Tatoeba</a>.
+        {{ $t("sentsource") }} <a href="https://tatoeba.org/">Tatoeba</a>.
       </div>
     </v-card>
   </div>

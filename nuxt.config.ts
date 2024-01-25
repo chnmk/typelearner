@@ -1,6 +1,5 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
-
 import vuetify, { transformAssetUrls } from "vite-plugin-vuetify";
+
 export default defineNuxtConfig({
   app: {
     baseURL: "/typelearner/",
@@ -22,6 +21,7 @@ export default defineNuxtConfig({
     "@nuxt/test-utils/module",
     "@nuxtjs/eslint-module",
     "nuxt-auth-utils",
+    "@nuxtjs/i18n",
   ],
   vite: {
     vue: {

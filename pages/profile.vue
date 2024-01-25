@@ -1,14 +1,14 @@
 <template>
   <div>
-    <h1 class="sheet-header">Profile</h1>
+    <h1 class="sheet-header">{{ $t("Profile") }}</h1>
     <br />
     <div v-if="loggedIn">
-      <h1>Welcome {{ user.login }}!</h1>
-      <p>Logged in since {{ session.loggedInAt }}</p>
-      <button @click="clear">Logout</button>
+      <h1>{{ $t("Welcome") }} {{ user.login }}!</h1>
+      <p>{{ $t("Loggedinsince") }} {{ session.loggedInAt }}</p>
+      <button @click="clear">{{ $t("Logout") }}</button>
     </div>
     <div v-else class="github-login">
-      <div class="placeholder">Not logged in</div>
+      <div class="placeholder">{{ $t("NotLoggedIn") }}</div>
       <br />
       <br />
       <v-btn

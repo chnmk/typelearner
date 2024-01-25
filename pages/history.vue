@@ -1,17 +1,17 @@
 <template>
   <div>
-    <h1 class="sheet-header">History</h1>
+    <h1 class="sheet-header">{{ $t("history") }}</h1>
     <br />
     <div>
       <p v-if="historyStore.answersTable.length == 0" class="placeholder">
-        Complete your first sentence to view history!
+        {{ $t("CompleteYourFirst") }}
       </p>
       <table v-if="historyStore.answersTable.length > 0" class="table-center">
         <thead>
           <tr>
             <th class="table-numbers" scope="col">#</th>
-            <th class="table-numbers" scope="col">Sentence</th>
-            <th class="table-numbers" scope="col">Time</th>
+            <th class="table-numbers" scope="col">{{ $t("tablesentence") }}</th>
+            <th class="table-numbers" scope="col">{{ $t("tabletime") }}</th>
           </tr>
         </thead>
         <tbody>
