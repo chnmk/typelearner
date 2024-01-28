@@ -23,7 +23,7 @@ export default defineI18nConfig(() => ({
         "Provides a typing practice environment for random sentences fetched from",
       techused: "Technologies used:",
       sourcecode: "Source code:",
-      sentsource: "Sentences source",
+      sentsource: "Sentences source:",
       // History page:
       history: "History",
       CompleteYourFirst: "Complete your first sentence to view history!",

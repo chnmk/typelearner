@@ -147,40 +147,34 @@ hr {
   */
 }
 
-.sentences-card {
-  margin: 0% 5% 0% 5%;
-}
-
-.sentences-box {
-  border: 2px solid purple;
-  padding-bottom: 5%;
-  min-height: 350px;
-  border-radius: 5px;
-}
-
 .loading-box-spinner {
   color: purple;
   text-align: center;
   margin-top: 10%;
 }
 
+.sentences-card {
+  margin: 0% 5% 0% 5%;
+}
+
+.sentences-box {
+  border: 2px solid purple;
+  min-height: 350px;
+  border-radius: 5px;
+}
+
 .original-text {
   font-weight: bold;
   font-size: 29px;
   max-width: 90%;
-  margin-top: 20px;
-  margin-left: 30px;
-  /*
-    text-align: center;
-  */
+  margin-top: 4%;
+  margin-left: 5%;
 }
 
 .translated-text {
   font-size: 25px;
   max-width: 90%;
-  margin-left: 30px;
-  /*
-    text-align: center;
-  */
+  margin-left: 5%;
+  margin-bottom: 4%;
 }
 </style>
