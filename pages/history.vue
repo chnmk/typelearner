@@ -6,28 +6,34 @@
       <p v-if="historyStore.answersTable.length == 0" class="placeholder">
         {{ $t("CompleteYourFirst") }}
       </p>
-      <table v-if="historyStore.answersTable.length > 0" class="table-center">
-        <thead>
-          <tr>
-            <th class="table-numbers" scope="col">#</th>
-            <th class="table-numbers" scope="col">{{ $t("tablesentence") }}</th>
-            <th class="table-numbers" scope="col">{{ $t("tabletime") }}</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="value in historyStore.answersTable" :key="value.id">
-            <td class="table-numbers">
-              <b>{{ value.id }}</b>
-            </td>
-            <td class="table-text">{{ value.Sentence }}</td>
-            <td class="table-numbers">
-              {{ value.Time
-              }}<!--
-                --><span class="m-space">&nbsp;</span>s
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <v-card class="table-card" hover>
+        <table v-if="historyStore.answersTable.length > 0" class="table-center">
+          <thead>
+            <tr>
+              <th class="table-numbers" scope="col">#</th>
+              <th class="table-numbers" scope="col">
+                {{ $t("tablesentence") }}
+              </th>
+              <th class="table-numbers" scope="col">
+                {{ $t("tabletime") }}
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="value in historyStore.answersTable" :key="value.id">
+              <td class="table-numbers">
+                <b>{{ value.id }}</b>
+              </td>
+              <td class="table-text">{{ value.Sentence }}</td>
+              <td class="table-numbers">
+                {{ value.Time
+                }}<!--
+                  --><span class="m-space">&nbsp;</span>s
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </v-card>
       <br />
     </div>
   </div>
@@ -51,11 +57,19 @@ h1 {
   font-size: 25px;
 }
 
-table {
-  border: 3px solid purple;
+.table-card {
   margin: auto;
   width: 75%;
+
+}
+
+table {
+  display: block;
+  border: 3px solid purple;
+  border-radius: 5px;
   border-collapse: collapse;
+  max-height: 500px;
+  overflow: auto;
 }
 
 .table-numbers {

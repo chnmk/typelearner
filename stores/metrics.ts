@@ -41,9 +41,12 @@ export const useMetricsStore = defineStore("metrics", {
           Translated: sentencesStore.fetchedTranslatedText,
         });
         // TODO: handle long history properly:
+        /*
         if (historyStore.answersTable.length > 7) {
           historyStore.answersTable.pop();
         }
+        */
+
         // Calculate average time:
         this.average = Math.round(
           historyStore.answersTable
