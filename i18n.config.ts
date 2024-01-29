@@ -60,7 +60,7 @@ export default defineI18nConfig(() => ({
       // History page:
       history: "История",
       CompleteYourFirst:
-        "Напишите свое первое предложение, чтобы увидеть историю!",
+        "Напишите своё первое предложение, чтобы увидеть историю!",
       tablesentence: "Предложение",
       tabletime: "Время",
       // Profile page:

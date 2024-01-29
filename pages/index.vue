@@ -166,15 +166,15 @@ hr {
 .original-text {
   font-weight: bold;
   font-size: 29px;
+  margin-left: 29px;
+  margin-top: 22px;
   max-width: 90%;
-  margin-top: 4%;
-  margin-left: 5%;
 }
 
 .translated-text {
   font-size: 25px;
+  margin-left: 29px;
+  margin-bottom: 22px;
   max-width: 90%;
-  margin-left: 5%;
-  margin-bottom: 4%;
 }
 </style>
