@@ -10,6 +10,6 @@ useHead({
   meta: [
     { name: "description", content: "Yet another language learning app." },
   ],
-  link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico?v2" }],
+  link: [{ rel: "icon", type: "image/x-icon", href: "favicon.ico" }],
 });
 </script>
